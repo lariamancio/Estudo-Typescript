@@ -1,3 +1,7 @@
+import { formatarMoeda } from "../utils/formatters.js";
+import { Transacao } from "../types/Transacao.js";
+import { TipoTransacao } from "../types/TipoTransacao.js";
+
 const elementoFormulario = document.querySelector(
   ".block-nova-transacao form"
 ) as HTMLFormElement;
@@ -34,10 +38,7 @@ elementoFormulario.addEventListener("submit", function (event) {
     return;
   }
 
-  elementoSaldo.textContent = saldo.toLocaleString("pt-br", {
-    style: "currency",
-    currency: "BRL",
-  });
+  elementoSaldo.textContent = formatarMoeda(saldo);
 
   const novaTransacao: Transacao = {
     tipoTransacao: tipoTransacao,

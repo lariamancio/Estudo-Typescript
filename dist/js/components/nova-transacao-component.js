@@ -1,3 +1,5 @@
+import { formatarMoeda } from "../utils/formatters.js";
+import { TipoTransacao } from "../types/TipoTransacao.js";
 const elementoFormulario = document.querySelector(".block-nova-transacao form");
 elementoFormulario.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -22,10 +24,7 @@ elementoFormulario.addEventListener("submit", function (event) {
         alert("Tipo de Transação é inválido!");
         return;
     }
-    elementoSaldo.textContent = saldo.toLocaleString("pt-br", {
-        style: "currency",
-        currency: "BRL",
-    });
+    elementoSaldo.textContent = formatarMoeda(saldo);
     const novaTransacao = {
         tipoTransacao: tipoTransacao,
         valor: valor,

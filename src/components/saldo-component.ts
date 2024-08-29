@@ -1,3 +1,6 @@
+import { formatarData, formatarMoeda } from "../utils/formatters.js";
+import { FormatoData } from "../types/FormatoData.js";
+
 let saldo: number = 3000;
 
 const elementoSaldo = document.querySelector(
@@ -9,18 +12,13 @@ const elementoDataAcesso = document.querySelector(
 ) as HTMLElement;
 
 if (elementoSaldo != null) {
-  elementoSaldo.textContent = saldo.toLocaleString("pt-br", {
-    style: "currency",
-    currency: "BRL",
-  });
+  elementoSaldo.textContent = formatarMoeda(saldo);
 }
 
 if (elementoDataAcesso != null) {
   const dataAcesso: Date = new Date();
-  elementoDataAcesso.textContent = dataAcesso.toLocaleDateString("pt-br", {
-    weekday: "long",
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  });
+  elementoDataAcesso.textContent = formatarData(
+    dataAcesso,
+    FormatoData.DIA_SEMANA_DIA_MES_ANO
+  );
 }
